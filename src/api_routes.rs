@@ -16,6 +16,7 @@ pub fn config(cfg: &mut web::ServiceConfig, rate_limit: &RateLimit) {
         web::scope("/site")
           .wrap(rate_limit.message())
           .route("", web::get().to(route_get_crud::<GetSite>))
+          .route("nauchi", web::get().to(route_get_crud::<GetSite>))
           // Admin Actions
           .route("", web::post().to(route_post_crud::<CreateSite>))
           .route("", web::put().to(route_post_crud::<EditSite>))
